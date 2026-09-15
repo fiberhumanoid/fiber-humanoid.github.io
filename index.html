@@ -4,27 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="title" content="FIBER">
-  <meta name="description" content="Anonymous project page for FIBER.">
-  <meta name="keywords" content="FIBER, anonymous research project">
+  <meta name="title" content="FIBER: Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation">
+  <meta name="description" content="FIBER learns versatile humanoid loco-manipulation from heterogeneous experts through offline planning over a frozen behavioral foundation model.">
+  <meta name="keywords" content="humanoid robotics, loco-manipulation, latent planning, behavioral foundation model, flow matching">
   <meta name="author" content="Anonymous Authors">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#07111f">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FIBER">
-  <meta property="og:title" content="FIBER">
-  <meta property="og:description" content="Anonymous research project.">
+  <meta property="og:title" content="FIBER: Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation">
+  <meta property="og:description" content="Action-aligned expert projection and unified offline latent planning for versatile humanoid interaction.">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="FIBER">
-  <meta name="twitter:description" content="Anonymous research project.">
+  <meta name="twitter:description" content="Action-aligned latent planning for versatile humanoid loco-manipulation.">
 
-  <meta name="citation_title" content="FIBER">
+  <meta name="citation_title" content="Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation">
   <meta name="citation_author" content="Anonymous Authors">
 
-  <title>FIBER</title>
+  <title>FIBER - Action-Aligned Latent Planning</title>
 
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
@@ -38,10 +39,11 @@
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "FIBER",
-    "description": "Anonymous research project.",
+    "headline": "Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation",
+    "description": "A framework that projects heterogeneous experts into a frozen behavioral foundation model and trains a unified perceptive latent planner entirely offline.",
     "author": {"@type": "Organization", "name": "Anonymous Authors"},
-    "isAccessibleForFree": true
+    "isAccessibleForFree": true,
+    "keywords": ["humanoid robotics", "loco-manipulation", "latent planning", "behavioral foundation model"]
   }
   </script>
 </head>
@@ -50,7 +52,7 @@
     <a href="#top" class="outline-link is-active">Top</a>
     <a href="#contributions" class="outline-link">Contributions</a>
     <a href="#method" class="outline-link">Method</a>
-    <a href="#tasks" class="outline-link">Tasks</a>
+    <a href="#tasks" class="outline-link">Real World</a>
     <a href="#results" class="outline-link">Results</a>
     <a href="#abstract" class="outline-link">Abstract</a>
     <a href="#citation" class="outline-link">Citation</a>
@@ -74,12 +76,14 @@
           <div class="hero-badge">Anonymous research project</div>
           <h1 class="title publication-title">
             <span class="title-main">FIBER</span>
-            <span class="title-sub">Anonymous Project Website</span>
+            <span class="title-sub">Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation</span>
           </h1>
           <p class="anonymous-authors">Anonymous Authors</p>
           <p class="anonymous-note">Affiliations withheld for anonymous review</p>
           <p class="hero-summary">
-            Project details, paper, and media will be added from the anonymous manuscript.
+            FIBER converts independently acquired interaction experts into executable latent
+            behaviors and learns one vision-conditioned planner entirely offline over a frozen
+            behavioral foundation model.
           </p>
           <div class="publication-links">
             <button type="button" class="button is-dark" disabled>Paper · soon</button>
@@ -91,36 +95,56 @@
       <div class="scroll-cue">Scroll</div>
     </section>
 
+    <section class="section teaser-section" aria-labelledby="teaser-heading">
+      <div class="container teaser-container reveal">
+        <p class="section-kicker has-text-centered">Unified execution</p>
+        <h2 class="title section-heading has-text-centered" id="teaser-heading">
+          One vision-conditioned latent planner, diverse real-world interactions
+        </h2>
+        <figure class="paper-figure">
+          <img src="static/images/teaser.webp" width="1800" height="1083" alt="Real Unitree G1 demonstrations of grasping, door opening, box pickup, and waypoint-conditioned steering." loading="eager">
+          <figcaption>
+            With onboard perception, the same planner generalizes across object grasping,
+            articulated interaction, whole-body box pickup, and waypoint-conditioned control.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="section is-soft" id="contributions">
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Key idea</p>
-          <h2 class="title section-heading">Project overview</h2>
+          <h2 class="title section-heading">Independent skill acquisition, one executable latent interface</h2>
           <p class="section-intro">
-            This section is ready for the paper's main idea and concise project summary.
+            FIBER preserves the flexibility of task-specific expert training while decoupling it
+            from downstream generalist learning.
           </p>
         </div>
 
         <div class="contribution-grid">
           <article class="contribution-card reveal">
             <span class="card-index">01</span>
-            <h3>Primary contribution</h3>
+            <h3>Modular acquisition and unified control</h3>
             <p>
-              A short, paper-derived explanation will be added here.
+              Skills can be acquired with different observations, rewards, and training pipelines,
+              then embedded into the shared latent space of a frozen behavioral foundation model.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">02</span>
-            <h3>Technical contribution</h3>
+            <h3>Action-aligned latent policy projection</h3>
             <p>
-              A short, paper-derived explanation will be added here.
+              Latent Policy Projection (LPP) matches each expert's short-horizon action responses,
+              producing lower-rate latent targets that retain high-frequency state feedback.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">03</span>
-            <h3>Experimental contribution</h3>
+            <h3>Adaptive-horizon behavior foundation model</h3>
             <p>
-              A short, paper-derived explanation will be added here.
+              Adaptive multi-γ forward-backward learning balances precise local control with
+              temporally extended whole-body behavior in one latent space.
             </p>
           </article>
         </div>
@@ -128,52 +152,55 @@
     </section>
 
     <section class="section" id="method">
-      <div class="container is-max-desktop">
+      <div class="container method-container">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Method</p>
-          <h2 class="title section-heading">Method overview</h2>
+          <h2 class="title section-heading">From heterogeneous experts to unified offline planning</h2>
           <p class="section-intro">
-            The final method diagram and terminology will be populated directly from the paper.
+            Experts are projected independently, collected in a shared executable representation,
+            and merged into one perception-conditioned latent planning dataset.
           </p>
         </div>
 
-        <div class="method-shell reveal">
-          <div class="method-flow">
-            <div class="method-node">
-              <span class="method-label">Input</span>
-              <h3>Paper-defined inputs</h3>
-              <p>Observation and conditioning details.</p>
-            </div>
-            <div class="method-arrow" aria-hidden="true">→</div>
-            <div class="method-node is-emphasis">
-              <span class="method-label">Model</span>
-              <h3>FIBER</h3>
-              <p>Core architecture and prediction interface.</p>
-              <div class="latent-knots" aria-hidden="true">
-                <span style="--o:.45"></span>
-                <span style="--o:.58"></span>
-                <span style="--o:.7"></span>
-                <span style="--o:.84"></span>
-                <span style="--o:1"></span>
-              </div>
-            </div>
-            <div class="method-arrow" aria-hidden="true">→</div>
-            <div class="method-node is-policy">
-              <span class="method-label">Module</span>
-              <h3>Supporting component</h3>
-              <p>Execution or downstream processing details.</p>
-            </div>
-            <div class="method-arrow" aria-hidden="true">→</div>
-            <div class="method-node">
-              <span class="method-label">Output</span>
-              <h3>Paper-defined outputs</h3>
-              <p>Final prediction or action interface.</p>
-            </div>
-          </div>
-          <div class="feedback-loop">
-            <span>↺</span>
-            <span><strong>Diagram placeholder:</strong> labels and connections will be replaced from the manuscript.</span>
-          </div>
+        <figure class="paper-figure pipeline-figure reveal">
+          <img src="static/images/pipeline.webp" width="2200" height="1055" alt="FIBER pipeline: heterogeneous expert acquisition, action-aligned latent policy projection, adaptive-horizon BFM, and unified latent planning." loading="lazy">
+          <figcaption>
+            FIBER separates skill acquisition, executable latent projection, and unified offline
+            planning while keeping the behavioral foundation model frozen downstream.
+          </figcaption>
+        </figure>
+
+        <div class="method-copy-grid">
+          <article class="method-copy reveal">
+            <span class="method-copy-index">A</span>
+            <h3>Heterogeneous expert acquisition</h3>
+            <p>
+              Interaction experts come from motion imitation, task-specific reward shaping, or
+              successor-feature-guided reuse of native whole-body behaviors.
+            </p>
+          </article>
+          <article class="method-copy reveal">
+            <span class="method-copy-index">B</span>
+            <h3>Action-aligned LPP</h3>
+            <p>
+              LPP identifies latent commands through the expert actions they induce over a local
+              horizon, with behavioral anchoring reducing ambiguity among action-equivalent latents.
+            </p>
+          </article>
+          <article class="method-copy reveal">
+            <span class="method-copy-index">C</span>
+            <h3>Unified latent flow planning</h3>
+            <p>
+              A DiT flow planner predicts future latent trajectories from onboard depth,
+              proprioception, and steering tokens such as language commands or navigation waypoints.
+            </p>
+          </article>
+        </div>
+
+        <div class="feedback-banner reveal">
+          <strong>Two feedback timescales.</strong>
+          The planner updates lower-rate latent trajectories from perception, while the frozen BFM
+          maps each latent and live robot state to high-rate actions.
         </div>
       </div>
     </section>
@@ -181,73 +208,161 @@
     <section class="section is-soft" id="tasks">
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
-          <p class="section-kicker">Evaluation</p>
-          <h2 class="title section-heading">Experiments and demonstrations</h2>
+          <p class="section-kicker">Real-world evaluation</p>
+          <h2 class="title section-heading">Direct sim-to-real transfer on the Unitree G1</h2>
           <p class="section-intro">
-            Media is intentionally omitted until the final anonymous assets are supplied.
+            Interaction experts, latent projectors, and the unified planner are trained entirely in
+            simulation and deployed with onboard depth perception.
           </p>
         </div>
 
-        <div class="task-grid">
-          <article class="task-card reveal">
-            <div class="task-visual" aria-hidden="true"></div>
-            <p class="task-meta">Experiment 01</p>
-            <h3>Demonstration placeholder</h3>
-            <p>Description and anonymous media will be added from the paper package.</p>
+        <div class="real-world-grid">
+          <article class="real-world-card reveal">
+            <span class="real-world-number">6/10</span>
+            <h3>Pickup Box</h3>
+            <p>Whole-body approach, contact, lift, and box stabilization.</p>
           </article>
-          <article class="task-card reveal">
-            <div class="task-visual" aria-hidden="true"></div>
-            <p class="task-meta">Experiment 02</p>
-            <h3>Demonstration placeholder</h3>
-            <p>Description and anonymous media will be added from the paper package.</p>
+          <article class="real-world-card reveal">
+            <span class="real-world-number">4/10</span>
+            <h3>Open Door</h3>
+            <p>Perceptive articulated interaction using the shared latent interface.</p>
           </article>
-          <article class="task-card reveal">
-            <div class="task-visual" aria-hidden="true"></div>
-            <p class="task-meta">Experiment 03</p>
-            <h3>Demonstration placeholder</h3>
-            <p>Description and anonymous media will be added from the paper package.</p>
+          <article class="real-world-card reveal">
+            <span class="real-world-number">2/10</span>
+            <h3>Grasp Object</h3>
+            <p>Fine-grained grasping under challenging onboard depth localization.</p>
           </article>
+        </div>
+
+        <div class="runtime-strip reveal">
+          <div><strong>5 Hz</strong><span>latent planner</span></div>
+          <div><strong>~20 ms</strong><span>planner inference</span></div>
+          <div><strong>50 Hz</strong><span>frozen BFM</span></div>
+          <div><strong>~0.4 ms</strong><span>BFM forward pass</span></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="results">
-      <div class="container is-max-desktop">
+      <div class="container results-container">
         <div class="has-text-centered reveal">
-          <p class="section-kicker">Results</p>
-          <h2 class="title section-heading">Quantitative results</h2>
+          <p class="section-kicker">Simulation results</p>
+          <h2 class="title section-heading">Closed-loop latent planning outperforms replay and kinematic targets</h2>
           <p class="section-intro">
-            Tables and claims will be copied from the final paper to avoid introducing stale or unsupported numbers.
+            Each task is evaluated on 128 variations spanning object geometry, placement, door
+            geometry, and grasped objects.
           </p>
         </div>
 
         <div class="result-highlights">
           <div class="highlight-card reveal">
-            <span class="highlight-number">—</span>
-            <span class="highlight-label">headline result</span>
+            <span class="highlight-number">42.0%</span>
+            <span class="highlight-label">FIBER mean simulation success</span>
           </div>
           <div class="highlight-card reveal">
-            <span class="highlight-number">—</span>
-            <span class="highlight-label">comparison result</span>
+            <span class="highlight-number">11.6%</span>
+            <span class="highlight-label">projected latent replay mean</span>
           </div>
           <div class="highlight-card reveal">
-            <span class="highlight-number">—</span>
-            <span class="highlight-label">evaluation scope</span>
+            <span class="highlight-number">3.5%</span>
+            <span class="highlight-label">kinematic planner mean</span>
           </div>
         </div>
 
         <div class="results-table-wrap reveal">
           <table class="results-table">
             <thead>
-              <tr><th>Method</th><th>Metric 01</th><th>Metric 02</th><th>Metric 03</th></tr>
+              <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="2">Pickup Box</th>
+                <th colspan="2">Open Door</th>
+                <th rowspan="2">Grasp Object</th>
+                <th rowspan="2">Mean</th>
+              </tr>
+              <tr>
+                <th>with approach</th>
+                <th>without</th>
+                <th>with approach</th>
+                <th>without</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Baseline</td><td>—</td><td>—</td><td>—</td></tr>
-              <tr class="ours-row"><td>FIBER</td><td>—</td><td>—</td><td>—</td></tr>
+              <tr class="group-row"><td colspan="7">Task-specific policies</td></tr>
+              <tr>
+                <td>Expert Policy</td>
+                <td>100.0 ± 0.0</td><td>90.8 ± 0.5</td><td>89.3 ± 0.2</td><td>97.9 ± 0.8</td><td>97.0 ± 0.8</td><td>95.4</td>
+              </tr>
+              <tr class="ours-soft-row">
+                <td>Ours - LPP Projector</td>
+                <td>81.9 ± 0.9</td><td>87.4 ± 2.4</td><td>83.5 ± 1.8</td><td>97.3 ± 0.4</td><td>52.9 ± 2.1</td><td>72.8</td>
+              </tr>
+
+              <tr class="group-row"><td colspan="7">Reference-prompted execution</td></tr>
+              <tr>
+                <td>SONIC</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>3.1 ± 0.0</td><td>12.1 ± 0.0</td><td>4.2</td>
+              </tr>
+              <tr>
+                <td>FALCON</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>2.7 ± 0.0</td><td>11.9 ± 0.3</td><td>4.1</td>
+              </tr>
+              <tr>
+                <td>B(s) Tracking</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>5.6 ± 0.5</td><td>13.9 ± 0.5</td><td>4.8</td>
+              </tr>
+              <tr class="ours-soft-row">
+                <td>Ours - Projected Replay</td>
+                <td>11.2 ± 0.8</td><td>17.7 ± 1.2</td><td>12.2 ± 0.9</td><td>49.5 ± 0.6</td><td>11.3 ± 1.1</td><td>11.6</td>
+              </tr>
+
+              <tr class="group-row"><td colspan="7">Perceptive planning</td></tr>
+              <tr>
+                <td>OmniContact</td>
+                <td>29.9 ± 0.2</td><td>49.6 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr>
+                <td>LessMimic</td>
+                <td>38.3 ± 0.0</td><td>28.5 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr>
+                <td>Kinematic Planner</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>10.6 ± 0.5</td><td>3.5</td>
+              </tr>
+              <tr class="ours-row">
+                <td>FIBER</td>
+                <td class="best">42.1 ± 0.6</td><td>44.1 ± 1.0</td><td class="best">53.5 ± 4.8</td><td class="best">51.2 ± 1.0</td><td class="best">30.3 ± 2.3</td><td class="best">42.0</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <p class="table-note">Placeholder only. Final values and labels will come directly from the manuscript.</p>
+        <p class="table-note">
+          Success rates in percent. “With approach” includes the approach phase; “without” starts near interaction. Mean uses with-approach settings.
+        </p>
+
+        <div class="analysis-block reveal">
+          <div class="analysis-copy">
+            <p class="section-kicker">Adaptive-horizon analysis</p>
+            <h3>Local precision and extended behavior in one BFM</h3>
+            <p>
+              The adaptive multi-γ model achieves the lowest joint tracking error and the best
+              behavior-embedding distance at 0.5, 1, and 2 seconds, balancing the strengths of
+              short- and long-horizon objectives.
+            </p>
+          </div>
+          <div class="results-table-wrap compact-table-wrap">
+            <table class="results-table compact-table">
+              <thead>
+                <tr><th>Method</th><th>Joint-MAE ↓</th><th>0.2 s ↓</th><th>0.5 s ↓</th><th>1 s ↓</th><th>2 s ↓</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>SONIC</td><td>0.1315</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>BFM γ=0.8</td><td>0.1107</td><td class="best">0.038</td><td>0.200</td><td>0.495</td><td>0.792</td></tr>
+                <tr><td>BFM γ=0.98</td><td>0.1327</td><td>0.048</td><td>0.213</td><td>0.451</td><td>0.601</td></tr>
+                <tr class="ours-row"><td>Adaptive-horizon BFM</td><td class="best">0.1020</td><td>0.049</td><td class="best">0.195</td><td class="best">0.422</td><td class="best">0.590</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -258,8 +373,27 @@
           <h2 class="title section-heading">Abstract</h2>
         </div>
         <p class="abstract-copy reveal">
-          The anonymous paper abstract will be inserted here verbatim or lightly adapted for the
-          project page after the manuscript is provided.
+          Learning a single humanoid controller for diverse loco-manipulation remains challenging,
+          as task-specific interaction skills are often acquired with different objectives,
+          observations, and training procedures. Existing approaches either rely on on-policy
+          multi-expert distillation, which couples generalist training to task-specific acquisition
+          pipelines, or learn offline from collected data, where direct action targets suffer from
+          limited closed-loop coverage and intermediate kinematic or contact representations can
+          remain physically ambiguous. We propose FIBER, a framework that learns versatile humanoid
+          loco-manipulation from heterogeneous experts through offline planning over a frozen
+          behavioral foundation model. We introduce Latent Policy Projection, which locally
+          projects each expert into the BFM latent space by aligning the actions induced by latent
+          commands with the expert's short-horizon control responses. The resulting lower-rate
+          latent targets retain high-frequency state feedback through the frozen BFM and can be
+          jointly learned by a unified perceptive planner. To make this shared latent space suitable
+          for both precise interaction execution and diverse whole-body behaviors, we further
+          introduce an adaptive-horizon BFM trained with adaptive multi-γ forward-backward learning.
+          We evaluate FIBER on box pickup, door opening, and object grasping in simulation and
+          transfer all three tasks to a real Unitree G1 humanoid. FIBER achieves 42.0% mean
+          simulation success, more than doubling projected latent replay (11.6%) and substantially
+          outperforming kinematic planning (3.5%), while LPP closely preserves expert performance
+          on box pickup and door opening. Real-world experiments further demonstrate sim-to-real
+          transfer, skill chaining, and conditional steering through the same unified planner.
         </p>
       </div>
     </section>
@@ -269,16 +403,17 @@
         <div class="has-text-centered reveal">
           <p class="section-kicker">Reference</p>
           <h2 class="title section-heading">Citation</h2>
-          <p class="section-intro">Anonymous citation placeholder for the review period.</p>
+          <p class="section-intro">Anonymous citation for the review period.</p>
         </div>
         <div class="bibtex-shell reveal">
           <div class="bibtex-header">
             <span>BibTeX</span>
             <button type="button" class="copy-bibtex" id="copy-bibtex" onclick="copyBibTeX()">Copy</button>
           </div>
-          <pre id="bibtex-code"><code>@article{anonymous_fiber,
-  title  = {FIBER},
-  author = {Anonymous Authors}
+          <pre id="bibtex-code"><code>@article{anonymous2026fiber,
+  title  = {Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation},
+  author = {Anonymous Authors},
+  year   = {2026}
 }</code></pre>
         </div>
       </div>

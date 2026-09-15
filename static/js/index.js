@@ -51,20 +51,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
+  const revealElements = Array.from(document.querySelectorAll(".reveal"));
+  const revealVisibleElements = () => {
+    revealElements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 1.08 && rect.bottom > -80) {
+        element.classList.add("is-visible");
+      }
+    });
+  };
 
-  document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "80px 0px" }
+    );
+    revealElements.forEach((element) => revealObserver.observe(element));
+  } else {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+  }
+
+  revealVisibleElements();
+  window.setTimeout(revealVisibleElements, 120);
   window.addEventListener("scroll", updateNavigation, { passive: true });
+  window.addEventListener("load", () => {
+    if (!window.location.hash) return;
+    const target = document.querySelector(window.location.hash);
+    if (!target) return;
+    window.setTimeout(() => {
+      target.scrollIntoView();
+      revealVisibleElements();
+      updateNavigation();
+    }, 80);
+  });
   updateNavigation();
 });
-
