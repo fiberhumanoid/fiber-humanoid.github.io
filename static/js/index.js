@@ -30,6 +30,46 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function setupVideoShowcases() {
+  const showcases = Array.from(document.querySelectorAll("[data-video-showcase]"));
+
+  showcases.forEach((showcase) => {
+    const video = showcase.querySelector("[data-demo-video]");
+    const label = showcase.querySelector("[data-video-label]");
+    const tabs = Array.from(showcase.querySelectorAll("[data-video]"));
+    if (!video || !tabs.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const source = tab.dataset.video;
+        const description = tab.dataset.label || tab.textContent.trim();
+        if (!source) return;
+
+        document.querySelectorAll("[data-demo-video]").forEach((otherVideo) => {
+          if (otherVideo !== video) otherVideo.pause();
+        });
+
+        tabs.forEach((candidate) => {
+          const isSelected = candidate === tab;
+          candidate.classList.toggle("is-active", isSelected);
+          candidate.setAttribute("aria-selected", String(isSelected));
+        });
+
+        if (video.getAttribute("src") !== source) {
+          video.pause();
+          video.removeAttribute("poster");
+          video.setAttribute("src", source);
+          video.load();
+        }
+
+        video.setAttribute("aria-label", description);
+        if (label) label.textContent = description;
+        video.play().catch(() => {});
+      });
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const topButton = document.querySelector(".scroll-to-top");
   const navLinks = Array.from(document.querySelectorAll(".outline-link"));
@@ -79,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   revealVisibleElements();
+  setupVideoShowcases();
   window.setTimeout(revealVisibleElements, 120);
   window.addEventListener("scroll", updateNavigation, { passive: true });
   window.addEventListener("load", () => {

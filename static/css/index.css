@@ -636,75 +636,139 @@ a {
   text-transform: uppercase;
 }
 
-.real-world-grid {
+.video-showcase-grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2.4rem;
 }
 
-.real-world-card {
+.video-showcase {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 10px 32px rgba(30, 52, 83, 0.06);
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.real-world-number {
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-image: linear-gradient(115deg, var(--blue), var(--violet), var(--pink));
-  color: transparent;
-  display: block;
-  font-size: 3rem;
-  font-weight: 850;
-  letter-spacing: -0.07em;
-  line-height: 1;
-  margin-bottom: 0.75rem;
-}
-
-.real-world-card h3 {
-  color: var(--text);
-  font-size: 1.05rem;
-  font-weight: 800;
-  margin-bottom: 0.45rem;
-}
-
-.real-world-card p {
-  color: var(--text-muted);
-  font-size: 0.86rem;
-}
-
-.runtime-strip {
-  background: #081525;
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: 16px;
-  display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 1rem;
-  overflow: hidden;
-}
-
-.runtime-strip div {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.035);
   display: flex;
   flex-direction: column;
-  padding: 1rem 0.75rem;
-  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
 }
 
-.runtime-strip strong {
-  color: #e8f2ff;
-  font-size: 1.25rem;
+.video-showcase:hover {
+  border-color: rgba(79, 124, 255, 0.3);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
 }
 
-.runtime-strip span {
-  color: #8fa5bf;
+.video-showcase-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  min-height: 9.8rem;
+  padding: 1.35rem 1.4rem 1.15rem;
+}
+
+.demo-index {
+  color: var(--blue);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.video-showcase h3 {
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.video-showcase-header p {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.demo-count {
+  background: rgba(79, 124, 255, 0.08);
+  border: 1px solid rgba(79, 124, 255, 0.15);
+  border-radius: 999px;
+  color: #47628f;
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  font-weight: 750;
+  padding: 0.38rem 0.62rem;
+  white-space: nowrap;
+}
+
+.video-frame {
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(56, 189, 248, 0.08), transparent 60%),
+    #050b14;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-frame video {
+  background: #050b14;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.video-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 1rem 1.2rem 0.55rem;
+}
+
+.video-tab {
+  background: #f5f8fc;
+  border: 1px solid #dbe4ef;
+  border-radius: 999px;
+  color: #526176;
+  cursor: pointer;
+  font: inherit;
   font-size: 0.72rem;
-  margin-top: 0.2rem;
+  font-weight: 750;
+  padding: 0.42rem 0.68rem;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.video-tab:hover,
+.video-tab:focus-visible {
+  border-color: rgba(79, 124, 255, 0.4);
+  color: var(--blue);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.video-tab.is-active {
+  background: #0d1d31;
+  border-color: #0d1d31;
+  color: #fff;
+}
+
+.video-current {
+  color: #76879c;
+  font-size: 0.72rem;
+  margin-top: auto;
+  padding: 0 1.2rem 1.15rem;
+}
+
+.video-showcase-note {
+  color: #718096;
+  font-size: 0.76rem;
+  margin-top: 1.2rem;
+  text-align: center;
 }
 
 .highlight-card {
@@ -992,12 +1056,8 @@ a {
   .task-grid,
   .result-highlights,
   .method-copy-grid,
-  .real-world-grid {
+  .video-showcase-grid {
     grid-template-columns: 1fr;
-  }
-
-  .runtime-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .analysis-block {
@@ -1036,8 +1096,14 @@ a {
     padding: 1rem;
   }
 
-  .runtime-strip {
-    grid-template-columns: 1fr;
+  .video-showcase-header {
+    min-height: 0;
+    padding: 1.15rem;
+  }
+
+  .video-tabs {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .abstract-copy {

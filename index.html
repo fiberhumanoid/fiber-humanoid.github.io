@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
   <script defer src="static/js/index.js"></script>
 
@@ -208,38 +208,137 @@
     <section class="section is-soft" id="tasks">
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
-          <p class="section-kicker">Real-world evaluation</p>
-          <h2 class="title section-heading">Direct sim-to-real transfer on the Unitree G1</h2>
+          <p class="section-kicker">Real-world demonstrations</p>
+          <h2 class="title section-heading">FIBER in closed-loop humanoid interaction</h2>
           <p class="section-intro">
             Interaction experts, latent projectors, and the unified planner are trained entirely in
-            simulation and deployed with onboard depth perception.
+            simulation and deployed with onboard depth perception. Select a trial to view each
+            real-world behavior.
           </p>
         </div>
 
-        <div class="real-world-grid">
-          <article class="real-world-card reveal">
-            <span class="real-world-number">6/10</span>
-            <h3>Pickup Box</h3>
-            <p>Whole-body approach, contact, lift, and box stabilization.</p>
+        <div class="video-showcase-grid">
+          <article class="video-showcase reveal" data-video-showcase>
+            <header class="video-showcase-header">
+              <div>
+                <span class="demo-index">01 · Grasping</span>
+                <h3>Table-height objects</h3>
+                <p>Perception-driven approach, contact, lift, and recovery across three configurations.</p>
+              </div>
+              <span class="demo-count">3 trials</span>
+            </header>
+            <div class="video-frame">
+              <video
+                src="static/videos/grasp_table_01.mp4"
+                poster="static/images/poster-grasp-table.webp"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                data-demo-video
+                aria-label="Table-height grasping, trial 1"
+              ></video>
+            </div>
+            <div class="video-tabs" role="tablist" aria-label="Table-height grasping trials">
+              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/grasp_table_01.mp4" data-label="Table-height grasping · Trial 1">Trial 1</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_table_02.mp4" data-label="Table-height grasping · Trial 2">Trial 2</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_table_03.mp4" data-label="Table-height grasping · Trial 3">Trial 3</button>
+            </div>
+            <p class="video-current" data-video-label aria-live="polite">Table-height grasping · Trial 1</p>
           </article>
-          <article class="real-world-card reveal">
-            <span class="real-world-number">4/10</span>
-            <h3>Open Door</h3>
-            <p>Perceptive articulated interaction using the shared latent interface.</p>
+
+          <article class="video-showcase reveal" data-video-showcase>
+            <header class="video-showcase-header">
+              <div>
+                <span class="demo-index">02 · Grasping</span>
+                <h3>Lower-platform objects</h3>
+                <p>Whole-body lowering, object acquisition, and balance recovery around a low support.</p>
+              </div>
+              <span class="demo-count">3 trials</span>
+            </header>
+            <div class="video-frame">
+              <video
+                src="static/videos/grasp_platform_01.mp4"
+                poster="static/images/poster-grasp-platform.webp"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                data-demo-video
+                aria-label="Lower-platform grasping, trial 1"
+              ></video>
+            </div>
+            <div class="video-tabs" role="tablist" aria-label="Lower-platform grasping trials">
+              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/grasp_platform_01.mp4" data-label="Lower-platform grasping · Trial 1">Trial 1</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_platform_02.mp4" data-label="Lower-platform grasping · Trial 2">Trial 2</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_platform_03.mp4" data-label="Lower-platform grasping · Trial 3">Trial 3</button>
+            </div>
+            <p class="video-current" data-video-label aria-live="polite">Lower-platform grasping · Trial 1</p>
           </article>
-          <article class="real-world-card reveal">
-            <span class="real-world-number">2/10</span>
-            <h3>Grasp Object</h3>
-            <p>Fine-grained grasping under challenging onboard depth localization.</p>
+
+          <article class="video-showcase reveal" data-video-showcase>
+            <header class="video-showcase-header">
+              <div>
+                <span class="demo-index">03 · Articulated interaction</span>
+                <h3>Door opening</h3>
+                <p>Door interactions under varied approach, contact, and initial-state geometry.</p>
+              </div>
+              <span class="demo-count">4 trials</span>
+            </header>
+            <div class="video-frame">
+              <video
+                src="static/videos/door_light_01.mp4"
+                poster="static/images/poster-door.webp"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                data-demo-video
+                aria-label="Light door opening, trial 1"
+              ></video>
+            </div>
+            <div class="video-tabs" role="tablist" aria-label="Door-opening trials">
+              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/door_light_01.mp4" data-label="Light door · Trial 1">Light 1</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_02.mp4" data-label="Light door · Trial 2">Light 2</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_03.mp4" data-label="Light door · Trial 3">Light 3</button>
+              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_04.mp4" data-label="Light door · Trial 4">Light 4</button>
+            </div>
+            <p class="video-current" data-video-label aria-live="polite">Light door · Trial 1</p>
+          </article>
+
+          <article class="video-showcase reveal" data-video-showcase>
+            <header class="video-showcase-header">
+              <div>
+                <span class="demo-index">04 · Locomotion</span>
+                <h3>Waypoint-conditioned steering</h3>
+                <p>Closed-loop whole-body locomotion from waypoint commands around obstacles.</p>
+              </div>
+              <span class="demo-count">1 trial</span>
+            </header>
+            <div class="video-frame">
+              <video
+                src="static/videos/waypoint_01.mp4"
+                poster="static/images/poster-waypoint.webp"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                data-demo-video
+                aria-label="Waypoint-conditioned steering"
+              ></video>
+            </div>
+            <div class="video-tabs" role="tablist" aria-label="Waypoint-conditioned steering trials">
+              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/waypoint_01.mp4" data-label="Waypoint-conditioned steering · Trial 1">Trial 1</button>
+            </div>
+            <p class="video-current" data-video-label aria-live="polite">Waypoint-conditioned steering · Trial 1</p>
           </article>
         </div>
 
-        <div class="runtime-strip reveal">
-          <div><strong>5 Hz</strong><span>latent planner</span></div>
-          <div><strong>~20 ms</strong><span>planner inference</span></div>
-          <div><strong>50 Hz</strong><span>frozen BFM</span></div>
-          <div><strong>~0.4 ms</strong><span>BFM forward pass</span></div>
-        </div>
+        <p class="video-showcase-note reveal">11 muted, web-optimized demonstrations · Select a trial to switch videos</p>
       </div>
     </section>
 
