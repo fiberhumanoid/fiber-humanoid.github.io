@@ -50,9 +50,9 @@
 <body>
   <nav class="outline-panel" aria-label="Page outline">
     <a href="#top" class="outline-link is-active">Top</a>
+    <a href="#tasks" class="outline-link">Real World</a>
     <a href="#contributions" class="outline-link">Contributions</a>
     <a href="#method" class="outline-link">Method</a>
-    <a href="#tasks" class="outline-link">Real World</a>
     <a href="#results" class="outline-link">Results</a>
     <a href="#abstract" class="outline-link">Abstract</a>
     <a href="#citation" class="outline-link">Citation</a>
@@ -88,34 +88,18 @@
           <div class="publication-links">
             <button type="button" class="button is-dark" disabled>Paper · soon</button>
             <button type="button" class="button is-dark" disabled>Code · soon</button>
-            <a class="button is-dark" href="#method">Explore method</a>
+            <a class="button is-dark" href="#tasks">Watch demos</a>
           </div>
         </div>
       </div>
       <div class="scroll-cue">Scroll</div>
     </section>
 
-    <section class="section teaser-section" aria-labelledby="teaser-heading">
-      <div class="container teaser-container reveal">
-        <p class="section-kicker has-text-centered">Unified execution</p>
-        <h2 class="title section-heading has-text-centered" id="teaser-heading">
-          One vision-conditioned latent planner, diverse real-world interactions
-        </h2>
-        <figure class="paper-figure">
-          <img src="static/images/teaser.webp" width="1800" height="1083" alt="Real Unitree G1 demonstrations of grasping, door opening, box pickup, and waypoint-conditioned steering." loading="eager">
-          <figcaption>
-            With onboard perception, the same planner generalizes across object grasping,
-            articulated interaction, whole-body box pickup, and waypoint-conditioned control.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section is-soft" id="contributions">
+    <section class="section" id="contributions">
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Key idea</p>
-          <h2 class="title section-heading">Independent skill acquisition, one executable latent interface</h2>
+          <h2 class="title section-heading">One latent interface for every skill</h2>
           <p class="section-intro">
             FIBER preserves the flexibility of task-specific expert training while decoupling it
             from downstream generalist learning.
@@ -151,11 +135,11 @@
       </div>
     </section>
 
-    <section class="section" id="method">
+    <section class="section is-soft" id="method">
       <div class="container method-container">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Method</p>
-          <h2 class="title section-heading">From heterogeneous experts to unified offline planning</h2>
+          <h2 class="title section-heading">From experts to one offline planner</h2>
           <p class="section-intro">
             Experts are projected independently, collected in a shared executable representation,
             and merged into one perception-conditioned latent planning dataset.
@@ -209,7 +193,7 @@
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Real-world demonstrations</p>
-          <h2 class="title section-heading">FIBER in closed-loop humanoid interaction</h2>
+          <h2 class="title section-heading">One policy, diverse real-world skills</h2>
           <p class="section-intro">
             Interaction experts, latent projectors, and the unified planner are trained entirely in
             simulation and deployed with onboard depth perception. Browse selected real-world
@@ -318,9 +302,9 @@
           <article class="video-showcase reveal" data-video-showcase>
             <header class="video-showcase-header">
               <div>
-                <span class="demo-index">04 · Dynamic box manipulation</span>
+                <span class="demo-index">04 · Randomized box pickup</span>
                 <h3>Throw pick</h3>
-                <p>Selected dynamic box interactions spanning throw, recovery, and pickup.</p>
+                <p>A human throws the box to create randomized landing poses before pickup.</p>
               </div>
               <span class="demo-count">5 examples</span>
             </header>
@@ -417,26 +401,42 @@
       <div class="container results-container">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Simulation results</p>
-          <h2 class="title section-heading">Closed-loop latent planning outperforms replay and kinematic targets</h2>
+          <h2 class="title section-heading">Closed-loop latent planning wins</h2>
           <p class="section-intro">
-            Each task is evaluated on 128 variations spanning object geometry, placement, door
-            geometry, and grasped objects.
+            A unified perceptive planner is evaluated against replay, tracking, and planning
+            baselines under broad task randomization.
           </p>
         </div>
 
-        <div class="result-highlights">
-          <div class="highlight-card reveal">
-            <span class="highlight-number">42.0%</span>
-            <span class="highlight-label">FIBER mean simulation success</span>
+        <div class="evaluation-scope reveal">
+          <strong>128</strong>
+          <div>
+            <span>variations per task</span>
+            <p>Box size and placement · door geometry · grasped objects</p>
           </div>
-          <div class="highlight-card reveal">
-            <span class="highlight-number">11.6%</span>
-            <span class="highlight-label">projected latent replay mean</span>
-          </div>
-          <div class="highlight-card reveal">
-            <span class="highlight-number">3.5%</span>
-            <span class="highlight-label">kinematic planner mean</span>
-          </div>
+        </div>
+
+        <div class="result-summary">
+          <article class="fiber-result reveal">
+            <span class="result-eyebrow">FIBER · unified perceptive policy</span>
+            <strong>42.0%</strong>
+            <p>Mean simulation success with closed-loop latent replanning.</p>
+          </article>
+          <aside class="baseline-results reveal" aria-label="Baseline results">
+            <span class="result-eyebrow">Baselines</span>
+            <div>
+              <span>Projected latent replay</span>
+              <strong>11.6%</strong>
+            </div>
+            <div>
+              <span>Kinematic planner</span>
+              <strong>3.5%</strong>
+            </div>
+          </aside>
+        </div>
+
+        <div class="results-separation-note reveal">
+          FIBER is the proposed unified policy; projected replay and the kinematic planner are comparison baselines.
         </div>
 
         <div class="results-table-wrap reveal">
@@ -459,11 +459,11 @@
             <tbody>
               <tr class="group-row"><td colspan="7">Task-specific policies</td></tr>
               <tr>
-                <td>Expert Policy</td>
+                <td>Expert Policy<sup>†</sup></td>
                 <td>100.0 ± 0.0</td><td>90.8 ± 0.5</td><td>89.3 ± 0.2</td><td>97.9 ± 0.8</td><td>97.0 ± 0.8</td><td>95.4</td>
               </tr>
               <tr class="ours-soft-row">
-                <td>Ours - LPP Projector</td>
+                <td>Ours - LPP Projector<sup>†</sup></td>
                 <td>81.9 ± 0.9</td><td>87.4 ± 2.4</td><td>83.5 ± 1.8</td><td>97.3 ± 0.4</td><td>52.9 ± 2.1</td><td>72.8</td>
               </tr>
 
@@ -480,14 +480,14 @@
                 <td>B(s) Tracking</td>
                 <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>5.6 ± 0.5</td><td>13.9 ± 0.5</td><td>4.8</td>
               </tr>
-              <tr class="ours-soft-row">
-                <td>Ours - Projected Replay</td>
+              <tr>
+                <td>Projected Latent Replay <span class="method-tag">Baseline</span></td>
                 <td>11.2 ± 0.8</td><td>17.7 ± 1.2</td><td>12.2 ± 0.9</td><td>49.5 ± 0.6</td><td>11.3 ± 1.1</td><td>11.6</td>
               </tr>
 
               <tr class="group-row"><td colspan="7">Perceptive planning</td></tr>
               <tr>
-                <td>OmniContact</td>
+                <td>OmniContact<sup>*</sup></td>
                 <td>29.9 ± 0.2</td><td>49.6 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
               </tr>
               <tr>
@@ -495,54 +495,68 @@
                 <td>38.3 ± 0.0</td><td>28.5 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
               </tr>
               <tr>
-                <td>Kinematic Planner</td>
+                <td>Kinematic Planner <span class="method-tag">Baseline</span></td>
                 <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>10.6 ± 0.5</td><td>3.5</td>
               </tr>
               <tr class="ours-row">
-                <td>FIBER</td>
+                <td>FIBER <span class="method-tag is-fiber">Ours</span></td>
                 <td class="best">42.1 ± 0.6</td><td>44.1 ± 1.0</td><td class="best">53.5 ± 4.8</td><td class="best">51.2 ± 1.0</td><td class="best">30.3 ± 2.3</td><td class="best">42.0</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="table-note">
-          Success rates in percent. “With approach” includes the approach phase; “without” starts near interaction. Mean uses with-approach settings.
+          Success rates in percent. “With approach” includes the approach phase; “without” starts near interaction.
+          <sup>†</sup> Task-specific policy. <sup>*</sup> Uses privileged object states instead of egocentric observations.
+          Mean uses with-approach settings.
         </p>
 
         <div class="analysis-block reveal">
           <div class="analysis-copy">
             <p class="section-kicker">Adaptive-horizon analysis</p>
-            <h3>Local precision and extended behavior in one BFM</h3>
+            <h3>One B(s), multiple successor horizons</h3>
             <p>
-              The adaptive multi-γ model achieves the lowest joint tracking error and the best
-              behavior-embedding distance at 0.5, 1, and 2 seconds, balancing the strengths of
-              short- and long-horizon objectives.
+              A single backward representation B(s) is accumulated with different discount factors.
+              Low γ produces a local successor feature, while high γ preserves information from
+              farther states; adaptive training retains both outputs in one BFM.
             </p>
           </div>
-          <div class="horizon-visual" role="img" aria-label="Short- and long-horizon objectives are adaptively weighted to train one shared BFM actor.">
-            <div class="horizon-branches">
-              <div class="horizon-branch is-short">
-                <span class="horizon-gamma">γ<sub>s</sub> = 0.8</span>
-                <div class="horizon-track"><span></span></div>
-                <strong>Local precision</strong>
-                <small>Short successor horizon</small>
-              </div>
-              <div class="horizon-fusion">
-                <span>adaptive</span>
-                <strong>weighting</strong>
-              </div>
-              <div class="horizon-branch is-long">
-                <span class="horizon-gamma">γ<sub>l</sub> = 0.98</span>
-                <div class="horizon-track"><span></span></div>
-                <strong>Extended behavior</strong>
-                <small>Long successor horizon</small>
+          <div class="sf-visual" role="img" aria-label="A single B of s representation is accumulated with low and high discount factors to produce different successor feature outputs.">
+            <div class="sf-formula">F<sub>γ</sub> = Σ<sub>k≥0</sub> γ<sup>k</sup> B(s<sub>t+k</sub>)</div>
+            <div class="sf-shared">
+              <span>Single shared representation</span>
+              <strong>B(s)</strong>
+              <div class="sf-state-sequence">
+                <i>B(s<sub>t</sub>)</i><b>→</b>
+                <i>B(s<sub>t+1</sub>)</i><b>→</b>
+                <i>B(s<sub>t+2</sub>)</i><b>→</b>
+                <i>B(s<sub>t+3</sub>)</i>
               </div>
             </div>
-            <div class="horizon-actor">
-              <span>state s + latent z</span>
-              <strong>One shared actor π<sub>BFM</sub>(s, z) → action</strong>
+            <div class="sf-split">Same B(s) sequence · different γ weighting</div>
+            <div class="sf-branches">
+              <div class="sf-branch is-low">
+                <span>Low γ · 0.8</span>
+                <div class="sf-weights">
+                  <i style="--h:100%">1.00</i><i style="--h:80%">0.80</i><i style="--h:64%">0.64</i><i style="--h:51%">0.51</i>
+                </div>
+                <strong>F<sub>0.8</sub>: local output</strong>
+                <small>Nearby states dominate for precise local control.</small>
+              </div>
+              <div class="sf-branch is-high">
+                <span>High γ · 0.98</span>
+                <div class="sf-weights">
+                  <i style="--h:100%">1.00</i><i style="--h:98%">0.98</i><i style="--h:96%">0.96</i><i style="--h:94%">0.94</i>
+                </div>
+                <strong>F<sub>0.98</sub>: extended output</strong>
+                <small>Farther states remain visible for temporal coherence.</small>
+              </div>
             </div>
-            <div class="horizon-metrics">
+            <div class="sf-output">
+              <strong>Different F<sub>γ</sub> outputs</strong>
+              <span>One B(s) remains shared across both horizons.</span>
+            </div>
+            <div class="sf-metrics">
               <div><strong>0.1020</strong><span>Joint-MAE ↓</span></div>
               <div><strong>0.195</strong><span>0.5 s distance ↓</span></div>
               <div><strong>0.422</strong><span>1 s distance ↓</span></div>
