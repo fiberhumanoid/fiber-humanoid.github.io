@@ -90,6 +90,86 @@
             <button type="button" class="button is-dark" disabled>Code · soon</button>
             <a class="button is-dark" href="#tasks">Watch demos</a>
           </div>
+
+          <div class="hero-video-matrix" aria-label="Real-world examples arranged by task">
+            <section class="hero-task-row" aria-labelledby="hero-pickup-label">
+              <div class="hero-task-label">
+                <span>01</span>
+                <h2 id="hero-pickup-label">Pickup</h2>
+                <small>Four selected examples</small>
+              </div>
+              <div class="hero-task-videos">
+                <figure class="hero-video-cell">
+                  <video src="static/videos/box_pick_high_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pickup example A"></video>
+                  <figcaption>Pickup</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/box_pick_high_04.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pickup example B"></video>
+                  <figcaption>Pickup · B</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/box_throw_pick_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pickup example C"></video>
+                  <figcaption>Pickup · C</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/box_throw_pick_04.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Pickup example D"></video>
+                  <figcaption>Pickup · D</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section class="hero-task-row" aria-labelledby="hero-door-label">
+              <div class="hero-task-label">
+                <span>02</span>
+                <h2 id="hero-door-label">Push Door</h2>
+                <small>Four selected examples</small>
+              </div>
+              <div class="hero-task-videos">
+                <figure class="hero-video-cell">
+                  <video src="static/videos/door_heavy_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Push door example A"></video>
+                  <figcaption>Push Door</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/door_heavy_02.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Push door example B"></video>
+                  <figcaption>Push Door · B</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/door_light_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Push door example C"></video>
+                  <figcaption>Push Door · C</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/door_light_03.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Push door example D"></video>
+                  <figcaption>Push Door · D</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section class="hero-task-row" aria-labelledby="hero-grasp-label">
+              <div class="hero-task-label">
+                <span>03</span>
+                <h2 id="hero-grasp-label">Grasp</h2>
+                <small>Four selected examples</small>
+              </div>
+              <div class="hero-task-videos">
+                <figure class="hero-video-cell">
+                  <video src="static/videos/grasp_table_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Grasp example A"></video>
+                  <figcaption>Grasp</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/grasp_table_03.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Grasp example B"></video>
+                  <figcaption>Grasp · B</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/grasp_platform_01.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Grasp example C"></video>
+                  <figcaption>Grasp · C</figcaption>
+                </figure>
+                <figure class="hero-video-cell">
+                  <video src="static/videos/grasp_platform_03.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Grasp example D"></video>
+                  <figcaption>Grasp · D</figcaption>
+                </figure>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
       <div class="scroll-cue">Scroll</div>
@@ -99,10 +179,10 @@
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
           <p class="section-kicker">Key idea</p>
-          <h2 class="title section-heading">One latent interface for every skill</h2>
+          <h2 class="title section-heading">One latent interface for multiple skills</h2>
           <p class="section-intro">
-            FIBER preserves the flexibility of task-specific expert training while decoupling it
-            from downstream generalist learning.
+            FIBER embeds independently acquired skills in a shared frozen BFM and unifies their
+            execution through offline latent planning.
           </p>
         </div>
 
@@ -111,24 +191,26 @@
             <span class="card-index">01</span>
             <h3>Modular acquisition and unified control</h3>
             <p>
-              Skills can be acquired with different observations, rewards, and training pipelines,
-              then embedded into the shared latent space of a frozen behavioral foundation model.
+              Independently acquired skills are embedded in a shared frozen BFM and unified through
+              latent planning.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">02</span>
-            <h3>Action-aligned latent policy projection</h3>
+            <h3>Latent policy projection of heterogeneous experts</h3>
             <p>
-              Latent Policy Projection (LPP) matches each expert's short-horizon action responses,
-              producing lower-rate latent targets that retain high-frequency state feedback.
+              We introduce LPP, which independently maps each interaction expert into a short-horizon
+              state-feedback policy over a shared frozen BFM, enabling robust local behavior to be
+              collected in a common latent form.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">03</span>
-            <h3>Adaptive-horizon behavior foundation model</h3>
+            <h3>Adaptive-horizon BFM and SF-guided expert acquisition</h3>
             <p>
-              Adaptive multi-γ forward-backward learning balances precise local control with
-              temporally extended whole-body behavior in one latent space.
+              We introduce adaptive multi-γ forward-backward learning to balance precise short-horizon
+              control with temporally extended behaviors, together with SF-guided learning to acquire
+              additional experts that reuse native BFM capabilities.
             </p>
           </article>
         </div>
@@ -212,7 +294,7 @@
               <div>
                 <span class="demo-index">01 · Grasping</span>
                 <h3>Table-height objects</h3>
-                <p>Perception-driven approach, contact, lift, and recovery across three configurations.</p>
+                <p>Perception-driven approach, contact, and lift across three configurations.</p>
               </div>
               <span class="demo-count">3 examples</span>
             </header>
@@ -242,7 +324,7 @@
               <div>
                 <span class="demo-index">02 · Grasping</span>
                 <h3>Lower-platform objects</h3>
-                <p>Whole-body lowering, object acquisition, and balance recovery around a low support.</p>
+                <p>Whole-body lowering and object acquisition around a low support.</p>
               </div>
               <span class="demo-count">3 examples</span>
             </header>
@@ -272,7 +354,7 @@
               <div>
                 <span class="demo-index">03 · Box manipulation</span>
                 <h3>Pick high</h3>
-                <p>Whole-body box pickup and placement onto a raised support across five selected examples.</p>
+                <p>Whole-body box pickup from a raised support across five selected examples.</p>
               </div>
               <span class="demo-count">5 examples</span>
             </header>
@@ -462,15 +544,15 @@
                 <td>Expert Policy<sup>†</sup></td>
                 <td>100.0 ± 0.0</td><td>90.8 ± 0.5</td><td>89.3 ± 0.2</td><td>97.9 ± 0.8</td><td>97.0 ± 0.8</td><td>95.4</td>
               </tr>
-              <tr class="ours-soft-row">
-                <td>Ours - LPP Projector<sup>†</sup></td>
+              <tr>
+                <td><strong>Ours — LPP Projector</strong><sup>†</sup></td>
                 <td>81.9 ± 0.9</td><td>87.4 ± 2.4</td><td>83.5 ± 1.8</td><td>97.3 ± 0.4</td><td>52.9 ± 2.1</td><td>72.8</td>
               </tr>
 
               <tr class="group-row"><td colspan="7">Reference-prompted execution</td></tr>
               <tr>
                 <td>SONIC</td>
-                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>3.1 ± 0.0</td><td>12.1 ± 0.0</td><td>4.2</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>3.1 ± 0.0</td><td class="second">12.1 ± 0.0</td><td>4.2</td>
               </tr>
               <tr>
                 <td>FALCON</td>
@@ -478,29 +560,29 @@
               </tr>
               <tr>
                 <td>B(s) Tracking</td>
-                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td>5.6 ± 0.5</td><td>13.9 ± 0.5</td><td>4.8</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td class="second">5.6 ± 0.5</td><td class="best">13.9 ± 0.5</td><td class="second">4.8</td>
               </tr>
               <tr>
-                <td>Projected Latent Replay <span class="method-tag">Baseline</span></td>
-                <td>11.2 ± 0.8</td><td>17.7 ± 1.2</td><td>12.2 ± 0.9</td><td>49.5 ± 0.6</td><td>11.3 ± 1.1</td><td>11.6</td>
+                <td><strong>Ours — Projected Replay</strong></td>
+                <td class="best">11.2 ± 0.8</td><td class="best">17.7 ± 1.2</td><td class="best">12.2 ± 0.9</td><td class="best">49.5 ± 0.6</td><td>11.3 ± 1.1</td><td class="best">11.6</td>
               </tr>
 
               <tr class="group-row"><td colspan="7">Perceptive planning</td></tr>
               <tr>
                 <td>OmniContact<sup>*</sup></td>
-                <td>29.9 ± 0.2</td><td>49.6 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                <td>29.9 ± 0.2</td><td class="best">49.6 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
               </tr>
               <tr>
                 <td>LessMimic</td>
-                <td>38.3 ± 0.0</td><td>28.5 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                <td class="second">38.3 ± 0.0</td><td>28.5 ± 0.0</td><td>—</td><td>—</td><td>—</td><td>—</td>
               </tr>
               <tr>
-                <td>Kinematic Planner <span class="method-tag">Baseline</span></td>
-                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>10.6 ± 0.5</td><td>3.5</td>
+                <td>Kinematic Planner</td>
+                <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td class="second">10.6 ± 0.5</td><td class="second">3.5</td>
               </tr>
               <tr class="ours-row">
-                <td>FIBER <span class="method-tag is-fiber">Ours</span></td>
-                <td class="best">42.1 ± 0.6</td><td>44.1 ± 1.0</td><td class="best">53.5 ± 4.8</td><td class="best">51.2 ± 1.0</td><td class="best">30.3 ± 2.3</td><td class="best">42.0</td>
+                <td><strong>Ours — FIBER</strong></td>
+                <td class="best">42.1 ± 0.6</td><td class="second">44.1 ± 1.0</td><td class="best">53.5 ± 4.8</td><td class="best">51.2 ± 1.0</td><td class="best">30.3 ± 2.3</td><td class="best">42.0</td>
               </tr>
             </tbody>
           </table>
@@ -537,17 +619,25 @@
             <div class="sf-branches">
               <div class="sf-branch is-low">
                 <span>Low γ · 0.8</span>
-                <div class="sf-weights">
-                  <i style="--h:100%">1.00</i><i style="--h:80%">0.80</i><i style="--h:64%">0.64</i><i style="--h:51%">0.51</i>
+                <div class="sf-density" aria-hidden="true">
+                  <svg viewBox="0 0 320 84" preserveAspectRatio="none" focusable="false">
+                    <path class="sf-density-area" d="M2 12 C40 18 67 40 96 62 C138 81 204 83 318 83 L318 84 L2 84 Z"></path>
+                    <path class="sf-density-line" d="M2 12 C40 18 67 40 96 62 C138 81 204 83 318 83"></path>
+                  </svg>
                 </div>
+                <div class="sf-time-axis"><i>s<sub>t</sub></i><i>s<sub>t+1</sub></i><i>s<sub>t+2</sub></i><i>s<sub>t+3</sub></i></div>
                 <strong>F<sub>0.8</sub>: local output</strong>
                 <small>Nearby states dominate for precise local control.</small>
               </div>
               <div class="sf-branch is-high">
                 <span>High γ · 0.98</span>
-                <div class="sf-weights">
-                  <i style="--h:100%">1.00</i><i style="--h:98%">0.98</i><i style="--h:96%">0.96</i><i style="--h:94%">0.94</i>
+                <div class="sf-density" aria-hidden="true">
+                  <svg viewBox="0 0 320 84" preserveAspectRatio="none" focusable="false">
+                    <path class="sf-density-area" d="M2 24 C64 24 120 28 174 36 C229 44 278 57 318 70 L318 84 L2 84 Z"></path>
+                    <path class="sf-density-line" d="M2 24 C64 24 120 28 174 36 C229 44 278 57 318 70"></path>
+                  </svg>
                 </div>
+                <div class="sf-time-axis"><i>s<sub>t</sub></i><i>s<sub>t+1</sub></i><i>s<sub>t+2</sub></i><i>s<sub>t+3</sub></i></div>
                 <strong>F<sub>0.98</sub>: extended output</strong>
                 <small>Farther states remain visible for temporal coherence.</small>
               </div>
