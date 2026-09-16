@@ -69,13 +69,20 @@ function setupHeroVideoMatrix() {
   if (!matrix || !videos.length) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileHero = window.matchMedia("(max-width: 699px)").matches;
+  const playableVideos = mobileHero
+    ? videos.filter((video, index) => index % 4 < 2)
+    : videos;
   let isRunning = false;
 
   const startPlayback = () => {
     if (isRunning || reducedMotion) return;
     isRunning = true;
     matrix.classList.add("is-playing");
-    videos.forEach((video) => {
+    playableVideos.forEach((video) => {
+      video.autoplay = true;
+      video.muted = true;
+      video.playsInline = true;
       loadDeferredVideo(video);
       video.play().catch(() => {});
     });
@@ -118,17 +125,26 @@ function setupVideoReels() {
   const toggleVideo = (video) => {
     if (video.paused) {
       video.dataset.userPaused = "false";
+      video.autoplay = true;
       loadDeferredVideo(video);
       video.play().catch(() => {});
     } else {
       video.dataset.userPaused = "true";
+      video.autoplay = false;
       video.pause();
     }
   };
 
   videos.forEach((video) => {
+    video.muted = true;
+    video.playsInline = true;
     video.addEventListener("play", () => updateState(video));
     video.addEventListener("pause", () => updateState(video));
+    video.addEventListener("canplay", () => {
+      if (video.dataset.inView === "true" && video.dataset.userPaused !== "true") {
+        video.play().catch(() => {});
+      }
+    });
     video.addEventListener("click", () => toggleVideo(video));
     video.addEventListener("keydown", (event) => {
       if (event.key !== "Enter" && event.key !== " ") return;
@@ -144,15 +160,18 @@ function setupVideoReels() {
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
+          video.dataset.inView = String(entry.isIntersecting);
           if (entry.isIntersecting && video.dataset.userPaused !== "true") {
+            video.autoplay = true;
             loadDeferredVideo(video);
             video.play().catch(() => {});
           } else {
+            video.autoplay = false;
             video.pause();
           }
         });
       },
-      { threshold: 0.4, rootMargin: "0px 0px 40px" }
+      { threshold: 0.15, rootMargin: "40px 0px 80px" }
     );
     videos.forEach((video) => videoObserver.observe(video));
   } else {
