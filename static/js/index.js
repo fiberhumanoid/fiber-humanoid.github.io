@@ -54,6 +54,72 @@ function setupMathFormula() {
   });
 }
 
+function loadDeferredVideo(video) {
+  const source = video.dataset.src;
+  if (video.getAttribute("src") || !source) return;
+  video.setAttribute("src", source);
+  video.load();
+}
+
+function setupHeroVideoMatrix() {
+  const matrix = document.querySelector(".hero-video-matrix");
+  const rows = Array.from(document.querySelectorAll(".hero-task-row"));
+  if (!matrix || !rows.length) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeRow = 0;
+  let rotationTimer = null;
+  let isRunning = false;
+
+  const activateRow = (rowIndex) => {
+    rows.forEach((row, index) => {
+      const isActive = index === rowIndex;
+      row.classList.toggle("is-active", isActive);
+      row.querySelectorAll("[data-hero-video]").forEach((video) => {
+        if (isActive) {
+          loadDeferredVideo(video);
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    });
+  };
+
+  const startRotation = () => {
+    if (isRunning || reducedMotion) return;
+    isRunning = true;
+    activateRow(activeRow);
+    rotationTimer = window.setInterval(() => {
+      activeRow = (activeRow + 1) % rows.length;
+      activateRow(activeRow);
+    }, 7000);
+  };
+
+  const stopRotation = () => {
+    isRunning = false;
+    window.clearInterval(rotationTimer);
+    rotationTimer = null;
+    rows.forEach((row) => {
+      row.classList.remove("is-active");
+      row.querySelectorAll("[data-hero-video]").forEach((video) => video.pause());
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const matrixObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startRotation();
+        else stopRotation();
+      },
+      { threshold: 0.08 }
+    );
+    matrixObserver.observe(matrix);
+  } else {
+    startRotation();
+  }
+}
+
 function setupVideoReels() {
   const videos = Array.from(document.querySelectorAll("[data-reel-video]"));
   if (!videos.length) return;
@@ -71,6 +137,7 @@ function setupVideoReels() {
   const toggleVideo = (video) => {
     if (video.paused) {
       video.dataset.userPaused = "false";
+      loadDeferredVideo(video);
       video.play().catch(() => {});
     } else {
       video.dataset.userPaused = "true";
@@ -97,15 +164,21 @@ function setupVideoReels() {
         entries.forEach((entry) => {
           const video = entry.target;
           if (entry.isIntersecting && video.dataset.userPaused !== "true") {
+            loadDeferredVideo(video);
             video.play().catch(() => {});
           } else {
             video.pause();
           }
         });
       },
-      { threshold: 0.22, rootMargin: "80px 0px" }
+      { threshold: 0.4, rootMargin: "0px 0px 40px" }
     );
     videos.forEach((video) => videoObserver.observe(video));
+  } else {
+    videos.slice(0, 3).forEach((video) => {
+      loadDeferredVideo(video);
+      video.play().catch(() => {});
+    });
   }
 }
 
@@ -158,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   revealVisibleElements();
+  setupHeroVideoMatrix();
   setupVideoReels();
   setupMathFormula();
   setupGammaChart();

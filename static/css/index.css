@@ -565,7 +565,14 @@ a {
   min-height: 0;
   min-width: 0;
   object-fit: cover;
+  opacity: 0.78;
+  transition: filter 0.5s ease, opacity 0.5s ease;
   width: 100%;
+}
+
+.hero-task-row.is-active .hero-video-cell video {
+  filter: saturate(0.82) contrast(1);
+  opacity: 1;
 }
 
 .hero-video-cell figcaption {
@@ -883,6 +890,8 @@ a {
 
 .single-policy-note strong {
   color: #e8f2ff;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .video-reels {
