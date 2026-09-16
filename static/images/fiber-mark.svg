@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Expert trajectory fibers wrapped around a shared latent sphere">
+  <circle cx="64" cy="64" r="37" fill="#eef2f5" stroke="#526b7e" stroke-width="1.8"/>
+  <ellipse cx="64" cy="64" rx="37" ry="13" fill="none" stroke="#91a3b1" stroke-width="1.2"/>
+  <ellipse cx="64" cy="64" rx="37" ry="13" fill="none" stroke="#91a3b1" stroke-width="1.2" transform="rotate(62 64 64)"/>
+  <g fill="none" stroke-linecap="round" stroke-width="2">
+    <path d="M15 69C32 37 52 29 77 39s29 29 38 18" stroke="#536f84"/>
+    <path d="M22 91C39 76 37 48 59 34s38-2 48-16" stroke="#8198a9"/>
+    <path d="M13 45C35 52 41 82 65 91s37-9 51 1" stroke="#536f84"/>
+    <path d="M34 112C39 88 61 84 81 67s17-36 33-44" stroke="#8198a9"/>
+    <path d="M30 20C43 38 67 31 86 47s13 39 30 47" stroke="#536f84"/>
+  </g>
+  <g fill="#536f84">
+    <circle cx="22" cy="91" r="2.6"/>
+    <circle cx="107" cy="18" r="2.6"/>
+    <circle cx="116" cy="92" r="2.6"/>
+  </g>
+</svg>

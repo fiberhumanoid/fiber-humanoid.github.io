@@ -28,11 +28,13 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
   <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="static/js/index.js"></script>
 
   <script type="application/ld+json">
@@ -73,10 +75,24 @@
 
       <div class="hero-body">
         <div class="hero-content">
-          <div class="hero-badge">Anonymous research project</div>
+          <div class="hero-mark" role="img" aria-label="Expert trajectory fibers wrapped around a shared latent sphere">
+            <svg viewBox="0 0 128 128" aria-hidden="true">
+              <circle class="mark-sphere" cx="64" cy="64" r="37"></circle>
+              <ellipse class="mark-orbit" cx="64" cy="64" rx="37" ry="13"></ellipse>
+              <ellipse class="mark-orbit is-tilted" cx="64" cy="64" rx="37" ry="13"></ellipse>
+              <path class="mark-fiber f1" d="M15 69C32 37 52 29 77 39s29 29 38 18"></path>
+              <path class="mark-fiber f2" d="M22 91C39 76 37 48 59 34s38-2 48-16"></path>
+              <path class="mark-fiber f3" d="M13 45C35 52 41 82 65 91s37-9 51 1"></path>
+              <path class="mark-fiber f4" d="M34 112C39 88 61 84 81 67s17-36 33-44"></path>
+              <path class="mark-fiber f5" d="M30 20C43 38 67 31 86 47s13 39 30 47"></path>
+              <circle class="mark-node" cx="22" cy="91" r="2.5"></circle>
+              <circle class="mark-node" cx="107" cy="18" r="2.5"></circle>
+              <circle class="mark-node" cx="116" cy="92" r="2.5"></circle>
+            </svg>
+          </div>
           <h1 class="title publication-title">
             <span class="title-main">FIBER</span>
-            <span class="title-sub">Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation</span>
+            <span class="title-sub">Action&#8209;Aligned Latent Planning for Versatile Humanoid Loco&#8209;Manipulation</span>
           </h1>
           <p class="anonymous-authors">Anonymous Authors</p>
           <p class="anonymous-note">Affiliations withheld for anonymous review</p>
@@ -178,6 +194,13 @@
     <section class="section" id="contributions">
       <div class="container is-max-desktop">
         <div class="has-text-centered reveal">
+          <img
+            class="section-mark"
+            src="static/images/fiber-mark.svg"
+            alt="Expert trajectory fibers wrapped around one shared latent sphere"
+            width="76"
+            height="76"
+          >
           <p class="section-kicker">Key idea</p>
           <h2 class="title section-heading">One latent interface for multiple skills</h2>
           <p class="section-intro">
@@ -288,9 +311,9 @@
           Every video below is executed by the same unified FIBER policy.
         </div>
 
-        <div class="video-showcase-grid">
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+        <div class="video-reels">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">01 · Grasping</span>
                 <h3>Table-height objects</h3>
@@ -298,29 +321,24 @@
               </div>
               <span class="demo-count">3 examples</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/grasp_table_01.mp4"
-                poster="static/images/poster-grasp-table.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Table-height grasping, selected example A"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-three">
+              <figure class="video-tile">
+                <video src="static/videos/grasp_table_01.mp4" poster="static/images/poster-grasp-table.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Table-height grasping, example A"></video>
+                <figcaption><span>Example A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/grasp_table_02.mp4" poster="static/images/poster-grasp-table.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Table-height grasping, example B"></video>
+                <figcaption><span>Example B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/grasp_table_03.mp4" poster="static/images/poster-grasp-table.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Table-height grasping, example C"></video>
+                <figcaption><span>Example C</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected table-height grasping examples">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/grasp_table_01.mp4" data-label="Table-height grasping · Selected example A">Example A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_table_02.mp4" data-label="Table-height grasping · Selected example B">Example B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_table_03.mp4" data-label="Table-height grasping · Selected example C">Example C</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Table-height grasping · Selected example A</p>
           </article>
 
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">02 · Grasping</span>
                 <h3>Lower-platform objects</h3>
@@ -328,29 +346,24 @@
               </div>
               <span class="demo-count">3 examples</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/grasp_platform_01.mp4"
-                poster="static/images/poster-grasp-platform.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Lower-platform grasping, selected example A"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-three">
+              <figure class="video-tile">
+                <video src="static/videos/grasp_platform_01.mp4" poster="static/images/poster-grasp-platform.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Lower-platform grasping, example A"></video>
+                <figcaption><span>Example A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/grasp_platform_02.mp4" poster="static/images/poster-grasp-platform.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Lower-platform grasping, example B"></video>
+                <figcaption><span>Example B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/grasp_platform_03.mp4" poster="static/images/poster-grasp-platform.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Lower-platform grasping, example C"></video>
+                <figcaption><span>Example C</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected lower-platform grasping examples">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/grasp_platform_01.mp4" data-label="Lower-platform grasping · Selected example A">Example A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_platform_02.mp4" data-label="Lower-platform grasping · Selected example B">Example B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/grasp_platform_03.mp4" data-label="Lower-platform grasping · Selected example C">Example C</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Lower-platform grasping · Selected example A</p>
           </article>
 
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">03 · Box manipulation</span>
                 <h3>Pick high</h3>
@@ -358,31 +371,32 @@
               </div>
               <span class="demo-count">5 examples</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/box_pick_high_01.mp4"
-                poster="static/images/poster-pick-high.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Pick high, selected example A"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-five">
+              <figure class="video-tile">
+                <video src="static/videos/box_pick_high_01.mp4" poster="static/images/poster-pick-high.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Pick high, example A"></video>
+                <figcaption><span>Example A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_pick_high_02.mp4" poster="static/images/poster-pick-high.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Pick high, example B"></video>
+                <figcaption><span>Example B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_pick_high_03.mp4" poster="static/images/poster-pick-high.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Pick high, example C"></video>
+                <figcaption><span>Example C</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_pick_high_04.mp4" poster="static/images/poster-pick-high.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Pick high, example D"></video>
+                <figcaption><span>Example D</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_pick_high_05.mp4" poster="static/images/poster-pick-high.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Pick high, example E"></video>
+                <figcaption><span>Example E</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected pick-high examples">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/box_pick_high_01.mp4" data-label="Pick high · Selected example A">Example A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_pick_high_02.mp4" data-label="Pick high · Selected example B">Example B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_pick_high_03.mp4" data-label="Pick high · Selected example C">Example C</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_pick_high_04.mp4" data-label="Pick high · Selected example D">Example D</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_pick_high_05.mp4" data-label="Pick high · Selected example E">Example E</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Pick high · Selected example A</p>
           </article>
 
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">04 · Randomized box pickup</span>
                 <h3>Throw pick</h3>
@@ -390,31 +404,32 @@
               </div>
               <span class="demo-count">5 examples</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/box_throw_pick_01.mp4"
-                poster="static/images/poster-throw-pick.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Throw pick, selected example A"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-five">
+              <figure class="video-tile">
+                <video src="static/videos/box_throw_pick_01.mp4" poster="static/images/poster-throw-pick.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Throw pick, example A"></video>
+                <figcaption><span>Example A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_throw_pick_02.mp4" poster="static/images/poster-throw-pick.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Throw pick, example B"></video>
+                <figcaption><span>Example B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_throw_pick_03.mp4" poster="static/images/poster-throw-pick.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Throw pick, example C"></video>
+                <figcaption><span>Example C</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_throw_pick_04.mp4" poster="static/images/poster-throw-pick.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Throw pick, example D"></video>
+                <figcaption><span>Example D</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/box_throw_pick_05.mp4" poster="static/images/poster-throw-pick.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Throw pick, example E"></video>
+                <figcaption><span>Example E</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected throw-pick examples">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/box_throw_pick_01.mp4" data-label="Throw pick · Selected example A">Example A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_throw_pick_02.mp4" data-label="Throw pick · Selected example B">Example B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_throw_pick_03.mp4" data-label="Throw pick · Selected example C">Example C</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_throw_pick_04.mp4" data-label="Throw pick · Selected example D">Example D</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/box_throw_pick_05.mp4" data-label="Throw pick · Selected example E">Example E</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Throw pick · Selected example A</p>
           </article>
 
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">05 · Articulated interaction</span>
                 <h3>Door opening</h3>
@@ -422,32 +437,36 @@
               </div>
               <span class="demo-count">6 examples</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/door_heavy_01.mp4"
-                poster="static/images/poster-door.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Heavy door opening, selected example A"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-six">
+              <figure class="video-tile">
+                <video src="static/videos/door_heavy_01.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Heavy door opening, example A"></video>
+                <figcaption><span>Heavy A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/door_heavy_02.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Heavy door opening, example B"></video>
+                <figcaption><span>Heavy B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/door_light_01.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Light door opening, example A"></video>
+                <figcaption><span>Light A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/door_light_02.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Light door opening, example B"></video>
+                <figcaption><span>Light B</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/door_light_03.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Light door opening, example C"></video>
+                <figcaption><span>Light C</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
+              <figure class="video-tile">
+                <video src="static/videos/door_light_04.mp4" poster="static/images/poster-door.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Light door opening, example D"></video>
+                <figcaption><span>Light D</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected door-opening examples">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/door_heavy_01.mp4" data-label="Heavy door · Selected example A">Heavy A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_heavy_02.mp4" data-label="Heavy door · Selected example B">Heavy B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_01.mp4" data-label="Light door · Selected example A">Light A</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_02.mp4" data-label="Light door · Selected example B">Light B</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_03.mp4" data-label="Light door · Selected example C">Light C</button>
-              <button class="video-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/door_light_04.mp4" data-label="Light door · Selected example D">Light D</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Heavy door · Selected example A</p>
           </article>
 
-          <article class="video-showcase reveal" data-video-showcase>
-            <header class="video-showcase-header">
+          <article class="video-reel reveal">
+            <header class="video-reel-header">
               <div>
                 <span class="demo-index">06 · Locomotion</span>
                 <h3>Waypoint-conditioned steering</h3>
@@ -455,27 +474,16 @@
               </div>
               <span class="demo-count">1 example</span>
             </header>
-            <div class="video-frame">
-              <video
-                src="static/videos/waypoint_01.mp4"
-                poster="static/images/poster-waypoint.webp"
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-demo-video
-                aria-label="Waypoint-conditioned steering"
-              ></video>
+            <div class="video-reel-grid video-reel-grid-single">
+              <figure class="video-tile">
+                <video src="static/videos/waypoint_01.mp4" poster="static/images/poster-waypoint.webp" muted loop playsinline preload="metadata" data-reel-video tabindex="0" aria-label="Waypoint-conditioned steering, example A"></video>
+                <figcaption><span>Example A</span><span class="video-tile-state">Paused</span></figcaption>
+              </figure>
             </div>
-            <div class="video-tabs" role="tablist" aria-label="Selected waypoint-conditioned steering example">
-              <button class="video-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/waypoint_01.mp4" data-label="Waypoint-conditioned steering · Selected example A">Example A</button>
-            </div>
-            <p class="video-current" data-video-label aria-live="polite">Waypoint-conditioned steering · Selected example A</p>
           </article>
         </div>
 
-        <p class="video-showcase-note reveal">23 selected, muted, web-optimized demonstrations · Choose an example to switch videos</p>
+        <p class="video-showcase-note reveal">23 selected, muted, web-optimized demonstrations · Visible examples play automatically</p>
       </div>
     </section>
 
@@ -603,8 +611,12 @@
               farther states; adaptive training retains both outputs in one BFM.
             </p>
           </div>
-          <div class="sf-visual" role="img" aria-label="A single B of s representation is accumulated with low and high discount factors to produce different successor feature outputs.">
-            <div class="sf-formula">F<sub>γ</sub> = Σ<sub>k≥0</sub> γ<sup>k</sup> B(s<sub>t+k</sub>)</div>
+          <div class="sf-visual" aria-label="Exact successor weights for gamma equals 0.8 and gamma equals 0.98 over states from t through t plus 20.">
+            <div
+              class="sf-formula"
+              data-katex="F_{\gamma}(s_t)=\sum_{k=0}^{\infty}\gamma^k B(s_{t+k})"
+              aria-label="F gamma of s t equals the sum from k equals zero to infinity of gamma to the k times B of s t plus k"
+            >Fγ(sₜ) = Σₖ₌₀∞ γᵏ B(sₜ₊ₖ)</div>
             <div class="sf-shared">
               <span>Single shared representation</span>
               <strong>B(s)</strong>
@@ -615,32 +627,19 @@
                 <i>B(s<sub>t+3</sub>)</i>
               </div>
             </div>
-            <div class="sf-split">Same B(s) sequence · different γ weighting</div>
-            <div class="sf-branches">
-              <div class="sf-branch is-low">
-                <span>Low γ · 0.8</span>
-                <div class="sf-density" aria-hidden="true">
-                  <svg viewBox="0 0 320 84" preserveAspectRatio="none" focusable="false">
-                    <path class="sf-density-area" d="M2 12 C40 18 67 40 96 62 C138 81 204 83 318 83 L318 84 L2 84 Z"></path>
-                    <path class="sf-density-line" d="M2 12 C40 18 67 40 96 62 C138 81 204 83 318 83"></path>
-                  </svg>
-                </div>
-                <div class="sf-time-axis"><i>s<sub>t</sub></i><i>s<sub>t+1</sub></i><i>s<sub>t+2</sub></i><i>s<sub>t+3</sub></i></div>
-                <strong>F<sub>0.8</sub>: local output</strong>
-                <small>Nearby states dominate for precise local control.</small>
+            <div class="sf-split">Exact weights w<sub>k</sub> = γ<sup>k</sup> on one shared state axis</div>
+            <div class="sf-exact-chart">
+              <div class="sf-chart-legend">
+                <span><i class="is-gamma-low"></i>γ = 0.8</span>
+                <span><i class="is-gamma-high"></i>γ = 0.98</span>
               </div>
-              <div class="sf-branch is-high">
-                <span>High γ · 0.98</span>
-                <div class="sf-density" aria-hidden="true">
-                  <svg viewBox="0 0 320 84" preserveAspectRatio="none" focusable="false">
-                    <path class="sf-density-area" d="M2 24 C64 24 120 28 174 36 C229 44 278 57 318 70 L318 84 L2 84 Z"></path>
-                    <path class="sf-density-line" d="M2 24 C64 24 120 28 174 36 C229 44 278 57 318 70"></path>
-                  </svg>
-                </div>
-                <div class="sf-time-axis"><i>s<sub>t</sub></i><i>s<sub>t+1</sub></i><i>s<sub>t+2</sub></i><i>s<sub>t+3</sub></i></div>
-                <strong>F<sub>0.98</sub>: extended output</strong>
-                <small>Farther states remain visible for temporal coherence.</small>
-              </div>
+              <svg data-gamma-chart viewBox="0 0 900 210" role="img" aria-label="Exact gamma to the k weights from k zero through twenty"></svg>
+              <p>Each marker is computed exactly as γ<sup>k</sup>; lines only connect the discrete samples.</p>
+            </div>
+            <div class="sf-exact-values" aria-label="Selected exact successor weights">
+              <div><strong>k</strong><span>0</span><span>4</span><span>8</span><span>12</span><span>16</span><span>20</span></div>
+              <div><strong>γ = 0.8</strong><span>1.0000</span><span>0.4096</span><span>0.1678</span><span>0.0687</span><span>0.0281</span><span>0.0115</span></div>
+              <div><strong>γ = 0.98</strong><span>1.0000</span><span>0.9224</span><span>0.8508</span><span>0.7847</span><span>0.7238</span><span>0.6676</span></div>
             </div>
             <div class="sf-output">
               <strong>Different F<sub>γ</sub> outputs</strong>

@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FIBER">
-  <defs>
-    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#38bdf8"/>
-      <stop offset=".48" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#f472b6"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="#07111f"/>
-  <path d="M14 48C24 38 22 22 34 14c7-5 13-2 16 2M17 54c12-8 12-25 23-31 5-3 9-2 12 1M12 39c8-8 8-18 17-25" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FIBER latent sphere">
+  <rect width="64" height="64" rx="15" fill="#0d161e"/>
+  <circle cx="32" cy="32" r="18" fill="#263641" stroke="#d8e2e9" stroke-width="1.5"/>
+  <ellipse cx="32" cy="32" rx="18" ry="6.5" fill="none" stroke="#8299aa"/>
+  <ellipse cx="32" cy="32" rx="18" ry="6.5" fill="none" stroke="#8299aa" transform="rotate(62 32 32)"/>
+  <g fill="none" stroke="#c4d2dc" stroke-width="2" stroke-linecap="round">
+    <path d="M7 35C16 19 27 15 39 20s15 15 20 9"/>
+    <path d="M10 47C20 38 19 24 30 17s19-1 24-9"/>
+    <path d="M7 22C18 26 21 41 33 46s18-5 25 1"/>
+  </g>
+  <g fill="#d8e2e9"><circle cx="10" cy="47" r="1.6"/><circle cx="54" cy="8" r="1.6"/><circle cx="58" cy="47" r="1.6"/></g>
 </svg>
-
