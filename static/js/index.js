@@ -55,7 +55,9 @@ function setupMathFormula() {
 }
 
 function loadDeferredVideo(video) {
-  const source = video.dataset.src;
+  const useHdHero = video.matches("[data-hero-video]")
+    && window.matchMedia("(min-width: 700px)").matches;
+  const source = useHdHero ? (video.dataset.srcHd || video.dataset.src) : video.dataset.src;
   if (video.getAttribute("src") || !source) return;
   video.setAttribute("src", source);
   video.load();
@@ -63,60 +65,39 @@ function loadDeferredVideo(video) {
 
 function setupHeroVideoMatrix() {
   const matrix = document.querySelector(".hero-video-matrix");
-  const rows = Array.from(document.querySelectorAll(".hero-task-row"));
-  if (!matrix || !rows.length) return;
+  const videos = Array.from(document.querySelectorAll("[data-hero-video]"));
+  if (!matrix || !videos.length) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let activeRow = 0;
-  let rotationTimer = null;
   let isRunning = false;
 
-  const activateRow = (rowIndex) => {
-    rows.forEach((row, index) => {
-      const isActive = index === rowIndex;
-      row.classList.toggle("is-active", isActive);
-      row.querySelectorAll("[data-hero-video]").forEach((video) => {
-        if (isActive) {
-          loadDeferredVideo(video);
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-    });
-  };
-
-  const startRotation = () => {
+  const startPlayback = () => {
     if (isRunning || reducedMotion) return;
     isRunning = true;
-    activateRow(activeRow);
-    rotationTimer = window.setInterval(() => {
-      activeRow = (activeRow + 1) % rows.length;
-      activateRow(activeRow);
-    }, 7000);
+    matrix.classList.add("is-playing");
+    videos.forEach((video) => {
+      loadDeferredVideo(video);
+      video.play().catch(() => {});
+    });
   };
 
-  const stopRotation = () => {
+  const stopPlayback = () => {
     isRunning = false;
-    window.clearInterval(rotationTimer);
-    rotationTimer = null;
-    rows.forEach((row) => {
-      row.classList.remove("is-active");
-      row.querySelectorAll("[data-hero-video]").forEach((video) => video.pause());
-    });
+    matrix.classList.remove("is-playing");
+    videos.forEach((video) => video.pause());
   };
 
   if ("IntersectionObserver" in window) {
     const matrixObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) startRotation();
-        else stopRotation();
+        if (entry.isIntersecting) startPlayback();
+        else stopPlayback();
       },
       { threshold: 0.08 }
     );
     matrixObserver.observe(matrix);
   } else {
-    startRotation();
+    startPlayback();
   }
 }
 

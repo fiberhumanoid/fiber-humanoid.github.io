@@ -570,7 +570,7 @@ a {
   width: 100%;
 }
 
-.hero-task-row.is-active .hero-video-cell video {
+.hero-video-matrix.is-playing .hero-video-cell video {
   filter: saturate(0.82) contrast(1);
   opacity: 1;
 }
