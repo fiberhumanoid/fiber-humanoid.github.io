@@ -204,36 +204,37 @@
           <p class="section-kicker">Key idea</p>
           <h2 class="title section-heading">One latent interface for multiple skills</h2>
           <p class="section-intro">
-            FIBER embeds independently acquired skills in a shared frozen BFM and unifies their
-            execution through offline latent planning.
+            FIBER represents independently acquired interaction experts in the shared executable
+            latent space of a frozen BFM and jointly learns their execution with one perceptive planner.
           </p>
         </div>
 
         <div class="contribution-grid">
           <article class="contribution-card reveal">
             <span class="card-index">01</span>
-            <h3>Modular acquisition and unified control</h3>
+            <h3>Unified representation and learning framework</h3>
             <p>
-              Independently acquired skills are embedded in a shared frozen BFM and unified through
-              latent planning.
+              FIBER represents independently acquired interaction experts in a shared executable
+              latent space of a frozen BFM and jointly learns their execution with a unified
+              perceptive planner.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">02</span>
-            <h3>Latent policy projection of heterogeneous experts</h3>
+            <h3>Action-aligned latent policy projection</h3>
             <p>
-              We introduce LPP, which independently maps each interaction expert into a short-horizon
-              state-feedback policy over a shared frozen BFM, enabling robust local behavior to be
-              collected in a common latent form.
+              LPP identifies BFM latents by matching their induced actions to an expert's local
+              state-dependent control responses, integrating heterogeneous experts without a
+              unified acquisition procedure.
             </p>
           </article>
           <article class="contribution-card reveal">
             <span class="card-index">03</span>
-            <h3>Adaptive-horizon BFM and SF-guided expert acquisition</h3>
+            <h3>Adaptive-horizon BFM and SF-guided acquisition</h3>
             <p>
-              We introduce adaptive multi-γ forward-backward learning to balance precise short-horizon
-              control with temporally extended behaviors, together with SF-guided learning to acquire
-              additional experts that reuse native BFM capabilities.
+              Multi-γ forward-backward learning yields AH-BFM, balancing precise local control with
+              temporally extended behavioral structure, while successor-feature-guided acquisition
+              reuses interaction-preserving behaviors.
             </p>
           </article>
         </div>
@@ -526,7 +527,7 @@
           <aside class="baseline-results reveal" aria-label="Baseline results">
             <span class="result-eyebrow">Baselines</span>
             <div>
-              <span>Projected latent replay</span>
+              <span>LPP Replay</span>
               <strong>11.6%</strong>
             </div>
             <div>
@@ -537,7 +538,7 @@
         </div>
 
         <div class="results-separation-note reveal">
-          FIBER is the proposed unified policy; projected replay and the kinematic planner are comparison baselines.
+          FIBER is the proposed unified policy; LPP Replay and the kinematic planner are comparison baselines.
         </div>
 
         <div class="results-table-wrap reveal">
@@ -564,7 +565,7 @@
                 <td>100.0 ± 0.0</td><td>90.8 ± 0.5</td><td>89.3 ± 0.2</td><td>97.9 ± 0.8</td><td>97.0 ± 0.8</td><td>95.4</td>
               </tr>
               <tr>
-                <td><strong>Ours — LPP Projector</strong><sup>†</sup></td>
+                <td><strong>Ours &ndash; LPP</strong><sup>†</sup></td>
                 <td>81.9 ± 0.9</td><td>87.4 ± 2.4</td><td>83.5 ± 1.8</td><td>97.3 ± 0.4</td><td>52.9 ± 2.1</td><td>72.8</td>
               </tr>
 
@@ -582,7 +583,7 @@
                 <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.4 ± 0.0</td><td class="second">5.6 ± 0.5</td><td class="best">13.9 ± 0.5</td><td class="second">4.8</td>
               </tr>
               <tr>
-                <td><strong>Ours — Projected Replay</strong></td>
+                <td><strong>Ours &ndash; LPP Replay</strong></td>
                 <td class="best">11.2 ± 0.8</td><td class="best">17.7 ± 1.2</td><td class="best">12.2 ± 0.9</td><td class="best">49.5 ± 0.6</td><td>11.3 ± 1.1</td><td class="best">11.6</td>
               </tr>
 
@@ -600,7 +601,7 @@
                 <td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td>0.0 ± 0.0</td><td class="second">10.6 ± 0.5</td><td class="second">3.5</td>
               </tr>
               <tr class="ours-row">
-                <td><strong>Ours — FIBER</strong></td>
+                <td><strong>Ours &ndash; FIBER</strong></td>
                 <td class="best">42.1 ± 0.6</td><td class="second">44.1 ± 1.0</td><td class="best">53.5 ± 4.8</td><td class="best">51.2 ± 1.0</td><td class="best">30.3 ± 2.3</td><td class="best">42.0</td>
               </tr>
             </tbody>
@@ -614,7 +615,7 @@
 
         <div class="analysis-block reveal">
           <div class="analysis-copy">
-            <p class="section-kicker">Adaptive-horizon analysis</p>
+            <p class="section-kicker">AH-BFM analysis</p>
             <h3>One B(s), multiple successor horizons</h3>
             <p>
               A single backward representation B(s) is accumulated with different discount factors.
@@ -658,24 +659,30 @@
             </div>
             <div class="sf-metrics">
               <div><strong>0.1020</strong><span>Joint-MAE ↓</span></div>
-              <div><strong>0.195</strong><span>0.5 s distance ↓</span></div>
-              <div><strong>0.422</strong><span>1 s distance ↓</span></div>
-              <div><strong>0.590</strong><span>2 s distance ↓</span></div>
+              <div><strong>0.195</strong><span>0.5 s BE-EMD ↓</span></div>
+              <div><strong>0.422</strong><span>1 s BE-EMD ↓</span></div>
+              <div><strong>0.590</strong><span>2 s BE-EMD ↓</span></div>
             </div>
           </div>
           <div class="results-table-wrap compact-table-wrap analysis-table">
             <table class="results-table compact-table">
               <thead>
-                <tr><th>Method</th><th>Joint-MAE ↓</th><th>0.2 s ↓</th><th>0.5 s ↓</th><th>1 s ↓</th><th>2 s ↓</th></tr>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th rowspan="2">Joint-MAE ↓</th>
+                  <th colspan="4">BE-EMD ↓</th>
+                </tr>
+                <tr><th>0.2 s</th><th>0.5 s</th><th>1 s</th><th>2 s</th></tr>
               </thead>
               <tbody>
                 <tr><td>SONIC</td><td>0.1315</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-                <tr><td>BFM γ=0.8</td><td>0.1107</td><td class="best">0.038</td><td>0.200</td><td>0.495</td><td>0.792</td></tr>
-                <tr><td>BFM γ=0.98</td><td>0.1327</td><td>0.048</td><td>0.213</td><td>0.451</td><td>0.601</td></tr>
-                <tr class="ours-row"><td>Adaptive-horizon BFM</td><td class="best">0.1020</td><td>0.049</td><td class="best">0.195</td><td class="best">0.422</td><td class="best">0.590</td></tr>
+                <tr><td>BFM γ<sub>0.8</sub></td><td>0.1107</td><td class="best">0.038</td><td>0.200</td><td>0.495</td><td>0.792</td></tr>
+                <tr><td>BFM γ<sub>0.98</sub></td><td>0.1327</td><td>0.048</td><td>0.213</td><td>0.451</td><td>0.601</td></tr>
+                <tr class="ours-row"><td>AH-BFM</td><td class="best">0.1020</td><td>0.049</td><td class="best">0.195</td><td class="best">0.422</td><td class="best">0.590</td></tr>
               </tbody>
             </table>
           </div>
+          <p class="table-note">Multi-horizon BFM tracking and behavior embedding performance on 100STYLE.</p>
         </div>
       </div>
     </section>
@@ -687,27 +694,25 @@
           <h2 class="title section-heading">Abstract</h2>
         </div>
         <p class="abstract-copy reveal">
-          Learning a single humanoid controller for diverse loco-manipulation remains challenging,
-          as task-specific interaction skills are often acquired with different objectives,
-          observations, and training procedures. Existing approaches either rely on on-policy
-          multi-expert distillation, which couples generalist training to task-specific acquisition
-          pipelines, or learn offline from collected data, where direct action targets suffer from
-          limited closed-loop coverage and intermediate kinematic or contact representations can
-          remain physically ambiguous. We propose FIBER, a framework that learns versatile humanoid
-          loco-manipulation from heterogeneous experts through offline planning over a frozen
-          behavioral foundation model. We introduce Latent Policy Projection, which locally
-          projects each expert into the BFM latent space by aligning the actions induced by latent
-          commands with the expert's short-horizon control responses. The resulting lower-rate
-          latent targets retain high-frequency state feedback through the frozen BFM and can be
-          jointly learned by a unified perceptive planner. To make this shared latent space suitable
-          for both precise interaction execution and diverse whole-body behaviors, we further
-          introduce an adaptive-horizon BFM trained with adaptive multi-γ forward-backward learning.
-          We evaluate FIBER on box pickup, door opening, and object grasping in simulation and
-          transfer all three tasks to a real Unitree G1 humanoid. FIBER achieves 42.0% mean
-          simulation success, more than doubling projected latent replay (11.6%) and substantially
-          outperforming kinematic planning (3.5%), while LPP closely preserves expert performance
-          on box pickup and door opening. Real-world experiments further demonstrate sim-to-real
-          transfer, skill chaining, and conditional steering through the same unified planner.
+          Learning a single perceptive policy for diverse humanoid loco-manipulation requires
+          unifying high-level task decisions without losing the state-dependent physical responses
+          that make each interaction succeed. Existing approaches either abstract physical
+          realization through kinematic or contact targets, rely on offline demonstrations with
+          limited closed-loop coverage, or require on-policy multi-expert distillation that tightly
+          couples skill acquisition and integration. We propose FIBER, a framework that represents
+          heterogeneous interaction experts in the executable latent space of a frozen Behavior
+          Foundation Model (BFM). Our Latent Policy Projection (LPP) identifies latent commands
+          whose induced actions match each expert's local control responses, enabling lower-rate
+          planning while retaining the BFM's high-frequency state feedback. After projection, we
+          aggregate closed-loop latent rollouts from all skills and train a single perceptive flow
+          planner entirely offline. We further introduce AH-BFM, an adaptive-horizon BFM trained
+          with multi-γ forward-backward learning to support both precise control and temporally
+          extended whole-body behavior. We evaluate FIBER on box pickup, door opening, and object
+          grasping in simulation and on a real Unitree G1 humanoid. Across 128 diverse variations
+          per task in simulation, FIBER achieves 42.0% mean success, more than tripling projected
+          latent replay (11.6%) and substantially outperforming kinematic planning (3.5%).
+          Real-world experiments further demonstrate sim-to-real transfer, skill chaining, and
+          conditional steering through the same unified planner.
         </p>
       </div>
     </section>
