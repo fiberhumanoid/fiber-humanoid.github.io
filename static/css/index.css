@@ -367,7 +367,7 @@ a {
   background-size: 220% 100%;
   color: #f2f4f6;
   display: block;
-  font-size: clamp(4.4rem, 9vw, 8rem);
+  font-size: clamp(4rem, 8vw, 7.2rem);
   font-weight: 800;
   isolation: isolate;
   letter-spacing: -0.08em;
@@ -1813,7 +1813,7 @@ a {
   }
 
   .title-main {
-    font-size: 5.1rem;
+    font-size: 4.65rem;
   }
 
   .method-shell {

@@ -68,43 +68,137 @@ function setupHeroVideoMatrix() {
   const videos = Array.from(document.querySelectorAll("[data-hero-video]"));
   if (!matrix || !videos.length) return;
 
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mobileHero = window.matchMedia("(max-width: 699px)").matches;
-  const playableVideos = mobileHero
-    ? videos.filter((video, index) => index % 4 < 2)
-    : videos;
-  let isRunning = false;
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mobileHeroQuery = window.matchMedia("(max-width: 699px)");
+  const pendingPlayback = new WeakSet();
+  const retryCounts = new WeakMap();
+  const retryTimers = new WeakMap();
+  let matrixInView = false;
 
-  const startPlayback = () => {
-    if (isRunning || reducedMotion) return;
-    isRunning = true;
-    matrix.classList.add("is-playing");
-    playableVideos.forEach((video) => {
-      video.autoplay = true;
-      video.muted = true;
-      video.playsInline = true;
-      loadDeferredVideo(video);
-      video.play().catch(() => {});
+  const getPlayableVideos = () => (
+    mobileHeroQuery.matches
+      ? videos.filter((video, index) => index % 4 < 2)
+      : videos
+  );
+
+  const clearRetry = (video) => {
+    const retryTimer = retryTimers.get(video);
+    if (retryTimer) window.clearTimeout(retryTimer);
+    retryTimers.delete(video);
+    retryCounts.delete(video);
+  };
+
+  const shouldPlay = (video) => (
+    matrixInView
+    && !document.hidden
+    && !reducedMotionQuery.matches
+    && video.dataset.heroAutoplay === "true"
+  );
+
+  const scheduleRetry = (video) => {
+    if (!shouldPlay(video) || retryTimers.has(video)) return;
+    const retryCount = (retryCounts.get(video) || 0) + 1;
+    if (retryCount > 8) return;
+    retryCounts.set(video, retryCount);
+
+    const retryTimer = window.setTimeout(() => {
+      retryTimers.delete(video);
+      attemptPlayback(video);
+    }, Math.min(160 * (2 ** (retryCount - 1)), 1600));
+    retryTimers.set(video, retryTimer);
+  };
+
+  function attemptPlayback(video) {
+    if (!shouldPlay(video)) return;
+    if (!video.paused && !video.ended) {
+      clearRetry(video);
+      return;
+    }
+    if (pendingPlayback.has(video)) return;
+
+    video.autoplay = true;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+    loadDeferredVideo(video);
+
+    let playPromise;
+    try {
+      playPromise = video.play();
+    } catch {
+      scheduleRetry(video);
+      return;
+    }
+    if (!playPromise || typeof playPromise.then !== "function") return;
+
+    pendingPlayback.add(video);
+    playPromise
+      .then(() => {
+        pendingPlayback.delete(video);
+        clearRetry(video);
+      })
+      .catch(() => {
+        pendingPlayback.delete(video);
+        scheduleRetry(video);
+      });
+  }
+
+  const syncPlayback = () => {
+    const activeVideos = new Set(getPlayableVideos());
+    const matrixShouldPlay = (
+      matrixInView
+      && !document.hidden
+      && !reducedMotionQuery.matches
+    );
+
+    videos.forEach((video) => {
+      const videoShouldPlay = matrixShouldPlay && activeVideos.has(video);
+      video.dataset.heroAutoplay = String(videoShouldPlay);
+
+      if (videoShouldPlay) {
+        attemptPlayback(video);
+      } else {
+        pendingPlayback.delete(video);
+        clearRetry(video);
+        video.autoplay = false;
+        video.pause();
+      }
     });
+
+    matrix.classList.toggle("is-playing", matrixShouldPlay);
   };
 
-  const stopPlayback = () => {
-    isRunning = false;
-    matrix.classList.remove("is-playing");
-    videos.forEach((video) => video.pause());
-  };
+  videos.forEach((video) => {
+    video.addEventListener("loadeddata", () => attemptPlayback(video));
+    video.addEventListener("canplay", () => attemptPlayback(video));
+    video.addEventListener("playing", () => clearRetry(video));
+    video.addEventListener("pause", () => scheduleRetry(video));
+  });
 
   if ("IntersectionObserver" in window) {
     const matrixObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) startPlayback();
-        else stopPlayback();
+        matrixInView = entry.isIntersecting;
+        syncPlayback();
       },
       { threshold: 0.08 }
     );
     matrixObserver.observe(matrix);
   } else {
-    startPlayback();
+    matrixInView = true;
+    syncPlayback();
+  }
+
+  document.addEventListener("visibilitychange", syncPlayback);
+  window.addEventListener("pageshow", syncPlayback);
+  window.addEventListener("load", syncPlayback);
+
+  if (typeof mobileHeroQuery.addEventListener === "function") {
+    mobileHeroQuery.addEventListener("change", syncPlayback);
+    reducedMotionQuery.addEventListener("change", syncPlayback);
+  } else {
+    mobileHeroQuery.addListener(syncPlayback);
+    reducedMotionQuery.addListener(syncPlayback);
   }
 }
 
